@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>双向数据 绑定</title>
+</head>
+<body>
+    <div id='app'>
+        <input v-model="b">
+        <div>{{b}}</div>
+        <button onClick="add()">+++</button>
+    </div>
+    <script>
+        function Vue (obj) {
+            this.el = obj.el;
+            this.data = obj.data;
+            observer(obj);
+        }
+        function observer(com){
+            var el = document.querySelector('#app input');
+            var showRes = document.querySelector('#app div');
+            var attr = el.getAttribute('v-model');
+        if(com.data[attr] !==undefined){
+            var attrNewData;
+            attrNewData = showRes.innerHTML= el.value = com.data[attr] ;
+            Object.defineProperty(com.data,attr,{
+                set : function(newval){
+                    if(newval !== attrNewData)attrNewData = newval;
+                    if(el.value !== newval)el.value = newval;
+                    showRes.innerHTML = newval;
+                },
+                get : function() {
+                    return attrNewData;
+                },
+                configurable:false
+            })
+            el.addEventListener('keyup',function(e) {
+                com.data[attr] = e.target.value;
+            })
+        }
+        }
+       
+        var app = new Vue({
+            el:'#app',
+            data:{
+                b:'aaaa'
+            }
+        })
+        // observer(app);
+        function add(){
+            console.log(app.data.b);
+            app.data.b +='11';
+        }
+    </script>
+</body>
+</html>
