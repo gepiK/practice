@@ -17,8 +17,10 @@
             this.el = obj.el;
             this.data = obj.data;
             observer(obj);
+			console.log('121212')
         }
         function observer(com){
+		console.log('22222')
             var el = document.querySelector('#app input');
             var showRes = document.querySelector('#app div');
             var attr = el.getAttribute('v-model');
