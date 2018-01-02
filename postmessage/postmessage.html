@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    </head>
+    <style>
+    .outer-container,.content {
+    width: 200px; height: 200px;
+}
+.outer-container {
+    position: relative;
+    overflow: hidden;
+}
+.inner-container {
+    position: absolute; left: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+ /* for Chrome */
+.inner-container::-webkit-scrollbar {
+    display: none;
+}
+    </style>
+    <body>
+        <div>
+            <button id="btn">按钮</button>
+            <a href="https://www.baidu.com">1111</a>
+
+
+        </div>
+        <div class="outer-container">
+            <div class="inner-container">
+               <div class="content">
+                   ......dfdfdsfdfdfdfdsfdfdfdfdsfdfdfdfdsfdfdfdfdsfdfdfdfdsfdfdfdfdsfdfdfdfdsfdfdfdfdsfdfdfdfdsfdfdfdfdsfdfdfdfdsfdfdfdfdsfdfdfdfdsfdfdfdfdsfdfdfdfdsfdfdfdfdsfdfdfdfdsfdfdfdfdsfdf
+               </div>
+            </div>
+        </div>
+        <script>
+            window.history.pushState({}, "title", "#");
+            window.addEventListener("hashchange", function(e) {
+                console.log(e)
+                }, false);
+                // window.addEventListener("visibilitychange", function(e) {
+                //     console.log(e)
+                //     alert("visibilitychange");//根据自己的需求实现自己的功能
+                // }, false);
+                // window.addEventListener("beforeunload", function(e) {
+                //     return 'onbeforeunload'
+                // }, false);
+                // window.onbeforeunload = function(params) {
+                //     alert('onbeforeunload')
+                //     return 'onbeforeunload'
+                // }
+        </script>
+    </body>
+</html>
